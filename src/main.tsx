@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, type Root } from 'react-dom/client';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { heroTitle, sections, type Block, type SiteSection } from './data/content';
@@ -23,16 +23,15 @@ function useReducedMotion() {
 
 function isBlockEmpty(block: Block) {
   if (block.kind === 'code') return block.code.trim().length === 0;
+  if (/<(img|svg|canvas|table)\b/i.test(block.html)) return false;
   return block.html.replace(/<[^>]*>/g, '').replace(/\s+/g, '').length === 0;
 }
 
 function normalizeSections(items: SiteSection[]) {
-  return items
-    .map((section) => ({
-      ...section,
-      blocks: section.blocks.filter((block) => !isBlockEmpty(block)),
-    }))
-    .filter((section, index) => index === 0 || section.blocks.length > 0);
+  return items.map((section) => ({
+    ...section,
+    blocks: section.blocks.filter((block) => !isBlockEmpty(block)),
+  }));
 }
 
 function HtmlBlock({ html }: { html: string }) {
@@ -83,9 +82,8 @@ function SectionCard({ section, index, reduced }: { section: SiteSection; index:
   }, [reduced]);
 
   return (
-    <section ref={ref} id={`section-${index}`} className="section-card" data-index={String(index + 1).padStart(2, '0')}>
+    <section ref={ref} id={`section-${index}`} className="section-card">
       <header className="section-head">
-        <span>{String(index + 1).padStart(2, '0')}</span>
         <h2>{section.title}</h2>
       </header>
       <div className="blocks">
@@ -171,4 +169,6 @@ function App() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(<App />);
+const container = document.getElementById('root') as HTMLElement & { __root?: Root };
+container.__root ??= createRoot(container);
+container.__root.render(<App />);

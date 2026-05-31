@@ -109,10 +109,10 @@ a { color: inherit; }
 .hero-title {
   position: relative;
   margin: 0;
-  font-size: clamp(34px, 6.5vw, 92px);
-  line-height: .96;
+  font-size: clamp(24px, 3.8vw, 52px);
+  line-height: 1.08;
   letter-spacing: 0;
-  max-width: 1080px;
+  max-width: 980px;
   color: #18222c;
   overflow-wrap: anywhere;
 }
@@ -168,38 +168,12 @@ a { color: inherit; }
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 
-.section-card::after {
-  content: attr(data-index);
-  position: absolute;
-  right: clamp(16px, 3vw, 34px);
-  top: clamp(14px, 2vw, 24px);
-  font-size: clamp(46px, 10vw, 136px);
-  line-height: .8;
-  letter-spacing: 0;
-  color: rgba(31, 41, 51, .045);
-  pointer-events: none;
-}
 .section-card:hover { border-color: var(--line-strong); }
 
 .section-head {
   position: relative;
   z-index: 1;
   padding: clamp(22px, 3.5vw, 42px) clamp(18px, 4vw, 46px) 12px;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
-}
-
-.section-head span {
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  font-size: 12px;
-  font-weight: 700;
-  border: 1px solid rgba(8, 127, 122, .20);
-  border-radius: 999px;
-  padding: 7px 10px;
-  background: rgba(8, 127, 122, .07);
 }
 
 .section-head h2 {
@@ -220,6 +194,7 @@ a { color: inherit; }
   gap: 16px;
   min-width: 0;
 }
+.blocks > * { min-width: 0; }
 
 .html-block {
   color: var(--muted);
@@ -278,18 +253,33 @@ a { color: inherit; }
 }
 .html-block tr:hover td, .output tr:hover td { background: rgba(8, 127, 122, .045); }
 
-.html-block img, .output img {
+.html-block .jp-RenderedImage,
+.output .jp-RenderedImage {
   max-width: 100%;
-  height: auto;
-  border-radius: 20px;
+  margin: 8px 0 18px;
+  padding: clamp(8px, 1.4vw, 14px);
   border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255,255,255,.68);
   box-shadow: 0 18px 54px rgba(41, 82, 105, .12);
 }
 
-.code-block {
+.html-block img, .output img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.code-block,
+.html-block pre,
+.output pre,
+.jp-RenderedText pre,
+.jp-OutputArea-output pre {
   margin: 0;
-  max-height: 460px;
-  overflow: auto;
+  max-width: 100%;
+  overflow-x: auto;
   padding: clamp(14px, 2vw, 20px);
   border-radius: 20px;
   border: 1px solid rgba(8,127,122,.16);
@@ -300,6 +290,24 @@ a { color: inherit; }
   tab-size: 2;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.code-block {
+  max-height: 460px;
+  overflow: auto;
+}
+
+.html-block pre code,
+.output pre code,
+.code-block code {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  white-space: inherit;
+  overflow-wrap: inherit;
+  word-break: inherit;
+  text-align: left;
 }
 
 .output {
@@ -307,7 +315,19 @@ a { color: inherit; }
   overflow-x: auto;
   color: var(--muted);
 }
-.jp-OutputArea, .jp-RenderedHTMLCommon { overflow: visible; }
+.jp-OutputArea,
+.jp-OutputArea-child,
+.jp-RenderedHTMLCommon,
+.jp-OutputArea-output {
+  max-width: 100%;
+  min-width: 0;
+}
+.jp-RenderedText,
+.jp-RenderedText pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 .anchor-link { display: none; }
 
 @media (max-width: 900px) {
@@ -319,7 +339,7 @@ a { color: inherit; }
 @media (max-width: 680px) {
   .site-shell { padding: 10px; }
   .hero-panel { border-radius: 24px; padding: 24px 18px; }
-  .hero-title { font-size: clamp(32px, 11vw, 52px); line-height: 1; }
+  .hero-title { font-size: clamp(24px, 7.6vw, 38px); line-height: 1.12; }
   .nav-ribbon {
     flex-wrap: nowrap;
     gap: 8px;
@@ -338,7 +358,7 @@ a { color: inherit; }
     scroll-snap-align: start;
   }
   .content-flow { gap: 16px; }
-  .section-head { grid-template-columns: 1fr; gap: 10px; padding: 20px 16px 10px; }
+  .section-head { padding: 20px 16px 10px; }
   .section-head h2 { font-size: clamp(22px, 7.4vw, 34px); line-height: 1.12; }
   .blocks { padding: 0 16px 22px; }
   .html-block { font-size: 15px; line-height: 1.62; }
@@ -355,8 +375,7 @@ a { color: inherit; }
   .site-shell { padding: 8px; }
   .hero { padding-top: 32px; }
   .hero-panel { padding: 22px 15px; }
-  .hero-title { font-size: clamp(28px, 9.2vw, 38px); }
-  .section-card::after { font-size: 58px; right: 12px; top: 12px; }
+  .hero-title { font-size: clamp(22px, 7vw, 32px); }
   .section-head { padding-inline: 14px; }
   .blocks { padding-inline: 14px; }
   .code-block { border-radius: 14px; }
