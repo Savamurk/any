@@ -48,19 +48,15 @@ export const sections: SiteSection[] = [
     "blocks": [
       {
         "kind": "code",
-        "code": "# Вызов необходимых библиотек\n\n\nimport\n \npandas\n \nas\n \npd\n\n\nimport\n \nmatplotlib.pyplot\n \nas\n \nplt\n\n\nimport\n \nnumpy\n \nas\n \nnp\n\n"
+        "code": "# Вызов необходимых библиотек\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\n"
       },
       {
         "kind": "code",
-        "code": "dataFrame1\n \n=\n \npd\n.\nread_excel\n(\n'Статистика.xlsx'\n,\n \nsheet_name\n=\n \n'Уровень 1 ДО ИЮЛЯ 2025 '\n)\n\n\ndataFrame2\n \n=\n \npd\n.\nread_excel\n(\n'Статистика.xlsx'\n,\n \nsheet_name\n=\n'Уровень 1 ПОСЛЕ ИЮЛЯ 2025'\n)\n\n\ndataFrame3\n \n=\n \npd\n.\nread_excel\n(\n'Статистика.xlsx'\n,\n \nsheet_name\n=\n'Tumen'\n)\n\n"
-      },
-      {
-        "kind": "output",
-        "html": "<div class=\"jp-OutputArea jp-Cell-outputArea\">\n<div class=\"jp-OutputArea-child\">\n\n<div class=\"jp-RenderedText jp-OutputArea-output\" data-mime-type=\"application/vnd.jupyter.stderr\" tabindex=\"0\">\n<pre>C:\\Users\\Данил\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openpyxl\\worksheet\\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed\n  warn(msg)\n</pre>\n</div>\n</div>\n</div>"
+        "code": "dataFrame1 = pd.read_excel('Статистика.xlsx', sheet_name= 'Уровень 1 ДО ИЮЛЯ 2025 ')\ndataFrame2 = pd.read_excel('Статистика.xlsx', sheet_name='Уровень 1 ПОСЛЕ ИЮЛЯ 2025')\ndataFrame3 = pd.read_excel('Статистика.xlsx', sheet_name='Tumen')\n"
       },
       {
         "kind": "code",
-        "code": "dataFrame1\n\n"
+        "code": "dataFrame1\n"
       },
       {
         "kind": "output",
@@ -68,7 +64,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "dataFrame2\n\n"
+        "code": "dataFrame2\n"
       },
       {
         "kind": "output",
@@ -76,7 +72,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "dataFrame3\n\n"
+        "code": "dataFrame3\n"
       },
       {
         "kind": "output",
@@ -89,7 +85,7 @@ export const sections: SiteSection[] = [
     "blocks": [
       {
         "kind": "code",
-        "code": "print\n \n(\ndataFrame1\n.\nisna\n()\n.\nsum\n())\n\n"
+        "code": "print (dataFrame1.isna().sum())\n"
       },
       {
         "kind": "output",
@@ -97,7 +93,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n \n(\ndataFrame2\n.\nisna\n()\n.\nsum\n())\n\n"
+        "code": "print (dataFrame2.isna().sum())\n"
       },
       {
         "kind": "output",
@@ -105,7 +101,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n \n(\ndataFrame3\n.\nisna\n()\n.\nsum\n())\n\n"
+        "code": "print (dataFrame3.isna().sum())\n"
       },
       {
         "kind": "output",
@@ -113,7 +109,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n \n(\ndataFrame1\n.\nisna\n()\n.\nsum\n())\n\n"
+        "code": "print (dataFrame1.isna().sum())\n"
       },
       {
         "kind": "output",
@@ -121,7 +117,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n(\ndataFrame1\n.\nduplicated\n(\nkeep\n=\nFalse\n)\n.\nsum\n())\n\n"
+        "code": "print(dataFrame1.duplicated(keep=False).sum())\n"
       },
       {
         "kind": "output",
@@ -129,7 +125,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n(\ndataFrame2\n.\nduplicated\n(\nkeep\n=\nFalse\n)\n.\nsum\n())\n\n"
+        "code": "print(dataFrame2.duplicated(keep=False).sum())\n"
       },
       {
         "kind": "output",
@@ -137,7 +133,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "print\n(\ndataFrame3\n.\nduplicated\n(\nkeep\n=\nFalse\n)\n.\nsum\n())\n\n"
+        "code": "print(dataFrame3.duplicated(keep=False).sum())\n"
       },
       {
         "kind": "output",
@@ -167,15 +163,15 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "# Преобразование столбца 'Вывод об успешности' в 1и 0 в таблице \"Уровень 1 ПОСЛЕ ИЮЛЯ 2025\"\n\n\ndataFrame2\n[\n'Вывод об успешности'\n]\n \n=\n \ndataFrame2\n[\n'Вывод об успешности'\n]\n.\nstr\n.\nlower\n()\n.\nmap\n({\n'да'\n:\n \n1\n,\n \n'нет'\n:\n \n0\n})\n\n"
+        "code": "# Преобразование столбца 'Вывод об успешности' в 1и 0 в таблице \"Уровень 1 ПОСЛЕ ИЮЛЯ 2025\"\ndataFrame2['Вывод об успешности'] = dataFrame2['Вывод об успешности'].str.lower().map({'да': 1, 'нет': 0})\n"
       },
       {
         "kind": "code",
-        "code": "# Преобразование столбца 'Вывод об успешности' в 1и 0 в таблице \"Уровень 1 ДО ИЮЛЯ 2025\"\n\n\ndataFrame1\n[\n'Вывод об успешности'\n]\n \n=\n \ndataFrame1\n[\n'Вывод об успешности'\n]\n.\nstr\n.\nlower\n()\n.\nmap\n({\n'да'\n:\n \n1\n,\n \n'нет'\n:\n \n0\n})\n\n"
+        "code": "# Преобразование столбца 'Вывод об успешности' в 1и 0 в таблице \"Уровень 1 ДО ИЮЛЯ 2025\"\ndataFrame1['Вывод об успешности'] = dataFrame1['Вывод об успешности'].str.lower().map({'да': 1, 'нет': 0})\n"
       },
       {
         "kind": "code",
-        "code": "fig\n,\n \n(\nax1\n,\n \nax2\n)\n \n=\n \nplt\n.\nsubplots\n(\n1\n,\n \n2\n,\n \nfigsize\n=\n(\n10\n,\n \n5\n))\n\n\n\n# Данные для первой диаграммы (до июля)\n\n\nvalues1\n \n=\n \ndataFrame1\n[\n'Вывод об успешности'\n]\n.\nvalue_counts\n()\n\n\nax1\n.\npie\n(\nvalues1\n,\n \nlabels\n=\n[\n'Не успешно'\n,\n \n'Успешно'\n],\n \nautopct\n=\n'\n%1.1f%%\n'\n,\n \nstartangle\n=\n90\n,\n \ncolors\n=\n[\n'lightcoral'\n,\n \n'lightgreen'\n])\n\n\nax1\n.\nset_title\n(\n'Результаты экзаменов до 1 июля 2025г.'\n)\n\n\n\n# Данные для второй диаграммы (после июля)\n\n\nvalues2\n \n=\n \ndataFrame2\n[\n'Вывод об успешности'\n]\n.\nvalue_counts\n()\n\n\nax2\n.\npie\n(\nvalues2\n,\n \nlabels\n=\n[\n'Не успешно'\n,\n \n'Успешно'\n],\n \nautopct\n=\n'\n%1.1f%%\n'\n,\n \nstartangle\n=\n90\n,\n \ncolors\n=\n[\n'lightcoral'\n,\n \n'lightgreen'\n])\n\n\nax2\n.\nset_title\n(\n'Результаты экзаменов после 1 июля 2025г.'\n)\n\n\n\nplt\n.\nshow\n()\n\n"
+        "code": "fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))\n\n# Данные для первой диаграммы (до июля)\nvalues1 = dataFrame1['Вывод об успешности'].value_counts()\nax1.pie(values1, labels=['Не успешно', 'Успешно'], autopct='%1.1f%%', startangle=90, colors=['lightcoral', 'lightgreen'])\nax1.set_title('Результаты экзаменов до 1 июля 2025г.')\n\n# Данные для второй диаграммы (после июля)\nvalues2 = dataFrame2['Вывод об успешности'].value_counts()\nax2.pie(values2, labels=['Не успешно', 'Успешно'], autopct='%1.1f%%', startangle=90, colors=['lightcoral', 'lightgreen'])\nax2.set_title('Результаты экзаменов после 1 июля 2025г.')\n\nplt.show()\n"
       },
       {
         "kind": "output",
@@ -192,15 +188,15 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Сумма работающих мигрантов за период январь-июль\n\n\nsmma1\n=\n \ndataFrame3\n[\n'январь-июнь'\n]\n.\nsum\n()\n\n"
+        "code": "#Сумма работающих мигрантов за период январь-июль\nsmma1= dataFrame3['январь-июнь'].sum()\n"
       },
       {
         "kind": "code",
-        "code": "#Сумма работающих мигрантов за период июль-декабрь\n\n\nsmma2\n=\n \ndataFrame3\n[\n'июнь-декабрь'\n]\n.\nsum\n()\n\n"
+        "code": "#Сумма работающих мигрантов за период июль-декабрь\nsmma2= dataFrame3['июнь-декабрь'].sum()\n"
       },
       {
         "kind": "code",
-        "code": "plt\n.\npie\n([\nsmma1\n,\n \nsmma2\n],\n \nlabels\n=\n[\n'Трудоустроенный в период январь-июнь'\n,\n \n'Трудоустроенный в период июнь-декабрь'\n],\n \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\nshow\n()\n\n"
+        "code": "plt.pie([smma1, smma2], labels=['Трудоустроенный в период январь-июнь', 'Трудоустроенный в период июнь-декабрь'], autopct='%1.1f%%')\nplt.show()\n"
       },
       {
         "kind": "output",
@@ -235,7 +231,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период до 1 июля 2025г.\n\n\n#Где 104945 все сдающие экзамен.А 11 число баллов за блок экзамена\n\n\nMR1\n=\n10945\n*\n11\n\n\nMR1\n\n\n#Сумма получения экзаменуемыми по русскому языку в период до 1 июля 2025г.\n\n\nsmmaR1\n \n=\n \ndataFrame1\n[[\n'балл 1'\n,\n \n'балл 2'\n,\n'балл 3'\n,\n'балл 4'\n,\n'балл 5'\n,\n'балл 6'\n,\n'балл 7'\n,\n'балл 8'\n,\n'балл 9'\n,\n'балл 10'\n,\n'балл 11'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaR1_1\n \n=\n \nsum\n(\nsmmaR1\n)\n\n\nsmmaR1_1\n\n\n#Процент правильных ответов всех экзаменуемых по русскому языку в период до 1 июля 2025г.\n\n\npercentagesR1\n \n=\n \n(\nsmmaR1_1\n \n/\n \nMR1\n \n)\n \n*\n \n100\n\n\nprint\n \n(\n'Процент правильных ответов всех экзаменуемых по русскому языку в период до 1 июля 2025г:'\n,\npercentagesR1\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период до 1 июля 2025г.\n#Где 104945 все сдающие экзамен.А 11 число баллов за блок экзамена\nMR1=10945*11\nMR1\n#Сумма получения экзаменуемыми по русскому языку в период до 1 июля 2025г.\nsmmaR1 = dataFrame1[['балл 1', 'балл 2','балл 3','балл 4','балл 5','балл 6','балл 7','балл 8','балл 9','балл 10','балл 11']].sum(axis=0)\nsmmaR1_1 = sum(smmaR1)\nsmmaR1_1\n#Процент правильных ответов всех экзаменуемых по русскому языку в период до 1 июля 2025г.\npercentagesR1 = (smmaR1_1 / MR1 ) * 100\nprint ('Процент правильных ответов всех экзаменуемых по русскому языку в период до 1 июля 2025г:',percentagesR1)\n"
       },
       {
         "kind": "output",
@@ -243,7 +239,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по истории России в период до 1 июля 2025г.\n\n\n#Где 104945 все сдающие экзамен.А 5 число баллов за блок экзамена\n\n\nMI1\n=\n10945\n*\n5\n\n\nMI1\n\n\n#Сумма получения экзаменуемыми по истории России в период до 1 июля 2025г.\n\n\nsmmaI1\n \n=\n \ndataFrame1\n[[\n'балл 12'\n,\n'балл 13'\n,\n'балл 14'\n,\n'балл 15'\n,\n'балл 16'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaI1_1\n \n=\n \nsum\n(\nsmmaI1\n)\n\n\nsmmaI1_1\n\n\n#Процент правильных ответов всех экзаменуемых по истории России в период до 1 июля 2025г.\n\n\npercentagesI1\n \n=\n \n(\nsmmaI1_1\n/\n \nMI1\n)\n \n*\n \n100\n\n\nprint\n(\n'Процент правильных ответов всех экзаменуемых по истории России в период до 1 июля 2025г:'\n,\npercentagesI1\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по истории России в период до 1 июля 2025г.\n#Где 104945 все сдающие экзамен.А 5 число баллов за блок экзамена\nMI1=10945*5\nMI1\n#Сумма получения экзаменуемыми по истории России в период до 1 июля 2025г.\nsmmaI1 = dataFrame1[['балл 12','балл 13','балл 14','балл 15','балл 16']].sum(axis=0)\nsmmaI1_1 = sum(smmaI1)\nsmmaI1_1\n#Процент правильных ответов всех экзаменуемых по истории России в период до 1 июля 2025г.\npercentagesI1 = (smmaI1_1/ MI1) * 100\nprint('Процент правильных ответов всех экзаменуемых по истории России в период до 1 июля 2025г:',percentagesI1)\n"
       },
       {
         "kind": "output",
@@ -251,7 +247,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по основам законодательства России в период до 1 июля 2025г.\n\n\n#Где 104945 все сдающие экзамен.А 4 число баллов за блок экзамена\n\n\nMO1\n=\n10945\n*\n4\n\n\nMO1\n\n\n#Сумма получения экзаменуемыми по основам законодательства России в период до 1 июля 2025г.\n\n\nsmmaO1\n \n=\n \ndataFrame1\n[[\n'балл 17'\n,\n'балл 18'\n,\n'балл 19'\n,\n'балл 20'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaO1_1\n \n=\n \nsum\n(\nsmmaO1\n)\n\n\nsmmaO1_1\n\n\n#Процент правильных ответов всех экзаменуемых по основам законодательства России в период до 1 июля 2025г.\n\n\npercentagesO1\n \n=\n \n(\nsmmaO1_1\n/\n \nMO1\n)\n \n*\n \n100\n\n\nprint\n \n(\n'Процент правильных ответов всех экзаменуемых по основам законодательства России в период до 1 июля 2025г:'\n,\npercentagesO1\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по основам законодательства России в период до 1 июля 2025г.\n#Где 104945 все сдающие экзамен.А 4 число баллов за блок экзамена\nMO1=10945*4\nMO1\n#Сумма получения экзаменуемыми по основам законодательства России в период до 1 июля 2025г.\nsmmaO1 = dataFrame1[['балл 17','балл 18','балл 19','балл 20']].sum(axis=0)\nsmmaO1_1 = sum(smmaO1)\nsmmaO1_1\n#Процент правильных ответов всех экзаменуемых по основам законодательства России в период до 1 июля 2025г.\npercentagesO1 = (smmaO1_1/ MO1) * 100\nprint ('Процент правильных ответов всех экзаменуемых по основам законодательства России в период до 1 июля 2025г:',percentagesO1)\n"
       },
       {
         "kind": "output",
@@ -259,7 +255,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n\n\n#Где 2381 все сдающие экзамен.А 11 число баллов за блок экзамена\n\n\nMR2\n=\n2381\n*\n11\n\n\nMR2\n\n\n#Сумма получения экзаменуемыми по русскому языку в период ПОСЛЕ 1 июля 2025г.\n\n\nsmmaR2\n \n=\n \ndataFrame2\n[[\n'балл 1'\n,\n \n'балл 2'\n,\n'балл 3'\n,\n'балл 4'\n,\n'балл 5'\n,\n'балл 6'\n,\n'балл 7'\n,\n'балл 8'\n,\n'балл 9'\n,\n'балл 10'\n,\n'балл 11'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaR2_2\n \n=\n \nsum\n(\nsmmaR2\n)\n\n\nsmmaR2_2\n\n\n#Процент правильных ответов всех экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n\n\npercentagesR2\n \n=\n \n(\nsmmaR2_2\n/\n \nMR2\n)\n \n*\n \n100\n\n\nprint\n \n(\n'Процент правильных ответов всех экзаменуемых по русскому языку в период после 1 июля 2025г:'\n,\n\n\npercentagesR2\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n#Где 2381 все сдающие экзамен.А 11 число баллов за блок экзамена\nMR2=2381*11\nMR2\n#Сумма получения экзаменуемыми по русскому языку в период ПОСЛЕ 1 июля 2025г.\nsmmaR2 = dataFrame2[['балл 1', 'балл 2','балл 3','балл 4','балл 5','балл 6','балл 7','балл 8','балл 9','балл 10','балл 11']].sum(axis=0)\nsmmaR2_2 = sum(smmaR2)\nsmmaR2_2\n#Процент правильных ответов всех экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\npercentagesR2 = (smmaR2_2/ MR2) * 100\nprint ('Процент правильных ответов всех экзаменуемых по русскому языку в период после 1 июля 2025г:',\npercentagesR2)\n"
       },
       {
         "kind": "output",
@@ -267,7 +263,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n\n\n#Где 2381 все сдающие экзамен.А 5 число заданий в блоке экзамена\n\n\nMI2\n=\n2381\n*\n5\n\n\nMI2\n\n\n#Сумма получения экзаменуемыми по истории России в период ПОСЛЕ 1 июля 2025г.\n\n\nsmmaI2\n \n=\n \ndataFrame2\n[[\n'балл 12'\n,\n'балл 13'\n,\n'балл 14'\n,\n'балл 15'\n,\n'балл 16'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaI2_2\n \n=\n \nsum\n(\nsmmaI2\n)\n\n\nsmmaI2_2\n\n\n#Процент правильных ответов всех экзаменуемых по истории России в период ПОСЛЕ 1 июля 2025г.\n\n\npercentagesI2\n \n=\n \n(\nsmmaI2_2\n/\n \nMI2\n)\n \n*\n \n100\n\n\nprint\n \n(\n'Процент правильных ответов всех экзаменуемых по истории России в период после 1 июля 2025г:'\n,\n\n\npercentagesI2\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n#Где 2381 все сдающие экзамен.А 5 число заданий в блоке экзамена\nMI2=2381*5\nMI2\n#Сумма получения экзаменуемыми по истории России в период ПОСЛЕ 1 июля 2025г.\nsmmaI2 = dataFrame2[['балл 12','балл 13','балл 14','балл 15','балл 16']].sum(axis=0)\nsmmaI2_2 = sum(smmaI2)\nsmmaI2_2\n#Процент правильных ответов всех экзаменуемых по истории России в период ПОСЛЕ 1 июля 2025г.\npercentagesI2 = (smmaI2_2/ MI2) * 100\nprint ('Процент правильных ответов всех экзаменуемых по истории России в период после 1 июля 2025г:',\npercentagesI2)\n"
       },
       {
         "kind": "output",
@@ -275,7 +271,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n\n\n#Где 2381 все сдающие экзамен.А 5 число заданий в блоке экзамена\n\n\nMO2\n=\n2381\n*\n4\n\n\nMO2\n\n\n#Сумма получения экзаменуемыми по основам законодательства России в период ПОСЛЕ 1 июля 2025г.\n\n\nsmmaO2\n \n=\n \ndataFrame2\n[[\n'балл 17'\n,\n'балл 18'\n,\n'балл 19'\n,\n'балл 20'\n]]\n.\nsum\n(\naxis\n=\n0\n)\n\n\nsmmaO2_2\n \n=\n \nsum\n(\nsmmaO2\n)\n\n\nsmmaO2_2\n\n\n#Процент правильных ответов всех экзаменуемых по основам законодательства России в период ПОСЛЕ 1 июля 2025г.\n\n\npercentagesO2\n \n=\n \n(\nsmmaO2_2\n/\n \nMO2\n)\n \n*\n \n100\n\n\nprint\n(\n'Процент правильных ответов всех экзаменуемых по основам законодательства России в период после 1 июля 2025г:'\n,\npercentagesO2\n)\n\n"
+        "code": "#Вычисляем максимальное количество баллов возможное получить для экзаменуемых по русскому языку в период ПОСЛЕ 1 июля 2025г.\n#Где 2381 все сдающие экзамен.А 5 число заданий в блоке экзамена\nMO2=2381*4\nMO2\n#Сумма получения экзаменуемыми по основам законодательства России в период ПОСЛЕ 1 июля 2025г.\nsmmaO2 = dataFrame2[['балл 17','балл 18','балл 19','балл 20']].sum(axis=0)\nsmmaO2_2 = sum(smmaO2)\nsmmaO2_2\n#Процент правильных ответов всех экзаменуемых по основам законодательства России в период ПОСЛЕ 1 июля 2025г.\npercentagesO2 = (smmaO2_2/ MO2) * 100\nprint('Процент правильных ответов всех экзаменуемых по основам законодательства России в период после 1 июля 2025г:',percentagesO2)\n"
       },
       {
         "kind": "output",
@@ -283,7 +279,7 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "#Строим сравнительные диаграммы для каждого предмета До и После изменений экзаменов. \n\n\n# Первая диаграмма Русский Язык\n\n\nplt\n.\nsubplot\n(\n1\n,\n \n2\n,\n \n1\n)\n  \n\nplt\n.\npie\n([\npercentagesR2\n,\n \npercentagesR1\n],\n \n        \nlabels\n=\n[\n'После 1 июля 2025г'\n,\n \n'До 1 июля 2025г'\n],\n \n        \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\ntitle\n(\n'Доля верных ответов \n\\n\n по русскому языку'\n)\n\n\n\n# Вторая диаграмма История России\n\n\nplt\n.\nsubplot\n(\n1\n,\n \n2\n,\n \n2\n)\n\n\nplt\n.\npie\n([\npercentagesI2\n,\n \npercentagesI1\n],\n \n        \nlabels\n=\n[\n'После 1 июля 2025г'\n,\n \n'До 1 июля 2025г'\n],\n \n        \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\ntitle\n(\n'Доля верных ответов \n\\n\n по истории России'\n)\n\n\n\nplt\n.\ntight_layout\n()\n\n\nplt\n.\nshow\n()\n\n\n# Третья диаграмма Основы законодательства России\n\n\nplt\n.\nsubplot\n(\n1\n,\n \n2\n,\n1\n \n)\n  \n\nplt\n.\npie\n([\npercentagesO2\n,\n \npercentagesO1\n],\n \n        \nlabels\n=\n[\n'После 1 июля 2025г'\n,\n \n'До 1 июля 2025г'\n],\n \n        \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\ntitle\n(\n'Доля верных ответов \n\\n\n по основам законодательства России'\n)\n\n\n\nplt\n.\ntight_layout\n()\n\n\nplt\n.\nshow\n()\n\n"
+        "code": "#Строим сравнительные диаграммы для каждого предмета До и После изменений экзаменов. \n# Первая диаграмма Русский Язык\nplt.subplot(1, 2, 1)  \nplt.pie([percentagesR2, percentagesR1], \n        labels=['После 1 июля 2025г', 'До 1 июля 2025г'], \n        autopct='%1.1f%%')\nplt.title('Доля верных ответов \\n по русскому языку')\n\n# Вторая диаграмма История России\nplt.subplot(1, 2, 2)\nplt.pie([percentagesI2, percentagesI1], \n        labels=['После 1 июля 2025г', 'До 1 июля 2025г'], \n        autopct='%1.1f%%')\nplt.title('Доля верных ответов \\n по истории России')\n\nplt.tight_layout()\nplt.show()\n# Третья диаграмма Основы законодательства России\nplt.subplot(1, 2,1 )  \nplt.pie([percentagesO2, percentagesO1], \n        labels=['После 1 июля 2025г', 'До 1 июля 2025г'], \n        autopct='%1.1f%%')\nplt.title('Доля верных ответов \\n по основам законодательства России')\n\nplt.tight_layout()\nplt.show()\n"
       },
       {
         "kind": "output",
@@ -318,15 +314,15 @@ export const sections: SiteSection[] = [
       },
       {
         "kind": "code",
-        "code": "# Переводим пустые ячейки в 0 а с текстом в 1 в листе Уровень 1 ДО ИЮЛЯ 2025 \n\n\ndataFrame1\n[\n'Комментарий'\n]\n \n=\n \ndataFrame1\n[\n'Комментарий'\n]\n.\napply\n(\n\n    \nlambda\n \nx\n:\n \n0\n \nif\n \npd\n.\nisna\n(\nx\n)\n \nor\n \n(\nisinstance\n(\nx\n,\n \nstr\n)\n \nand\n \nx\n.\nstrip\n()\n \n==\n \n''\n)\n \nelse\n \n1\n\n\n)\n\n\n#Cчитаем сумму 0 и едениц отдельно\n\n\ncount_0\n \n=\n \n(\ndataFrame1\n[\n'Комментарий'\n]\n \n==\n \n0\n)\n.\nsum\n()\n\n\ncount_1\n \n=\n \n(\ndataFrame1\n[\n'Комментарий'\n]\n \n==\n \n1\n)\n.\nsum\n()\n\n"
+        "code": "# Переводим пустые ячейки в 0 а с текстом в 1 в листе Уровень 1 ДО ИЮЛЯ 2025 \ndataFrame1['Комментарий'] = dataFrame1['Комментарий'].apply(\n    lambda x: 0 if pd.isna(x) or (isinstance(x, str) and x.strip() == '') else 1\n)\n#Cчитаем сумму 0 и едениц отдельно\ncount_0 = (dataFrame1['Комментарий'] == 0).sum()\ncount_1 = (dataFrame1['Комментарий'] == 1).sum()\n"
       },
       {
         "kind": "code",
-        "code": "# Переводим пустые ячейки в 0 а с текстом в 1 в листе Уровень 1  ИЮЛЯ 2025 \n\n\ndataFrame2\n[\n'Комментарий'\n]\n \n=\n \ndataFrame2\n[\n'Комментарий'\n]\n.\napply\n(\n\n    \nlambda\n \nx\n:\n \n0\n \nif\n \npd\n.\nisna\n(\nx\n)\n \nor\n \n(\nisinstance\n(\nx\n,\n \nstr\n)\n \nand\n \nx\n.\nstrip\n()\n \n==\n \n''\n)\n \nelse\n \n1\n\n\n)\n\n\n#Cчитаем сумму 0 и едениц отдельно\n\n\ncount_2\n \n=\n \n(\ndataFrame2\n[\n'Комментарий'\n]\n \n==\n \n0\n)\n.\nsum\n()\n\n\ncount_3\n \n=\n \n(\ndataFrame2\n[\n'Комментарий'\n]\n \n==\n \n1\n)\n.\nsum\n()\n\n"
+        "code": "# Переводим пустые ячейки в 0 а с текстом в 1 в листе Уровень 1  ИЮЛЯ 2025 \ndataFrame2['Комментарий'] = dataFrame2['Комментарий'].apply(\n    lambda x: 0 if pd.isna(x) or (isinstance(x, str) and x.strip() == '') else 1\n)\n#Cчитаем сумму 0 и едениц отдельно\ncount_2 = (dataFrame2['Комментарий'] == 0).sum()\ncount_3 = (dataFrame2['Комментарий'] == 1).sum()\n"
       },
       {
         "kind": "code",
-        "code": "#Гистограмма по таблице % Списывания до ИЮЛЯ 2025\n\n\nplt\n.\nsubplot\n(\n1\n,\n \n2\n,\n1\n \n)\n  \n\nplt\n.\npie\n([\ncount_0\n,\n \ncount_1\n],\n \n        \nlabels\n=\n[\n'Не списали'\n,\n \n'Списали'\n],\n \n        \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\ntitle\n(\n'Доля честных и нечестных стратегий\n\\n\nсдачи экзамена до июля 2025'\n)\n\n\n\nplt\n.\ntight_layout\n()\n\n\nplt\n.\nshow\n()\n \n\n\n#Гистограмма по таблице % Списывания после ИЮЛЯ 2025\n\n\nplt\n.\nsubplot\n(\n1\n,\n \n2\n,\n1\n \n)\n  \n\nplt\n.\npie\n([\ncount_2\n,\n \ncount_3\n],\n \n        \nlabels\n=\n[\n'Не списали'\n,\n \n'Списали'\n],\n \n        \nautopct\n=\n'\n%1.1f%%\n'\n)\n\n\nplt\n.\ntitle\n(\n'Доля честных и нечестных стратегий\n\\n\nсдачи экзамена после июля 2025'\n)\n\n\n\nplt\n.\ntight_layout\n()\n\n\nplt\n.\nshow\n()\n\n"
+        "code": "#Гистограмма по таблице % Списывания до ИЮЛЯ 2025\nplt.subplot(1, 2,1 )  \nplt.pie([count_0, count_1], \n        labels=['Не списали', 'Списали'], \n        autopct='%1.1f%%')\nplt.title('Доля честных и нечестных стратегий\\nсдачи экзамена до июля 2025')\n\nplt.tight_layout()\nplt.show() \n\n#Гистограмма по таблице % Списывания после ИЮЛЯ 2025\nplt.subplot(1, 2,1 )  \nplt.pie([count_2, count_3], \n        labels=['Не списали', 'Списали'], \n        autopct='%1.1f%%')\nplt.title('Доля честных и нечестных стратегий\\nсдачи экзамена после июля 2025')\n\nplt.tight_layout()\nplt.show()\n"
       },
       {
         "kind": "output",
