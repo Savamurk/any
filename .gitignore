@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.playwright-mcp/
+
+*.log
+*.png
+
+.DS_Store
+.env
+.env.*
